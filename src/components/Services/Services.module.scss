@@ -1,0 +1,83 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.services {
+  position: relative;
+  background: linear-gradient(180deg, $ink 0%, $ink-soft 100%);
+}
+
+.inner {
+  @include container;
+  @include section;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.grid {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: 1fr;
+
+  @include from($bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include from($bp-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  @include card;
+  position: relative;
+  overflow: hidden;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition:
+    transform 0.3s $ease-out,
+    border-color 0.3s $ease-out;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: $line-strong;
+
+    .shine {
+      opacity: 1;
+    }
+  }
+}
+
+.index {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $indigo-bright;
+  letter-spacing: 0.05em;
+}
+
+.cardTitle {
+  font-size: $fs-h3;
+  font-weight: 600;
+}
+
+.cardText {
+  font-size: $fs-sm;
+  color: $text-dim;
+  line-height: 1.55;
+}
+
+.shine {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    140px 140px at var(--x, 50%) 0%,
+    rgba($indigo, 0.18),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s $ease-out;
+  pointer-events: none;
+}

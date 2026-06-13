@@ -1,0 +1,123 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.work {
+  position: relative;
+  background: linear-gradient(180deg, $ink 0%, $ink-soft 100%);
+}
+
+.inner {
+  @include container;
+  @include section;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+
+  @include from($bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  @include card;
+  overflow: hidden;
+  transition:
+    transform 0.35s $ease-out,
+    border-color 0.35s $ease-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $line-strong;
+
+    .preview {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.preview {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  margin: 0.75rem 0.75rem 0;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  background: $ink;
+  border: 1px solid $line;
+  transition: transform 0.4s $ease-out;
+}
+
+.card[data-i="0"] .mockHero { background: linear-gradient(135deg, rgba($indigo, 0.65), rgba($cyan, 0.35)); }
+.card[data-i="1"] .mockHero { background: linear-gradient(135deg, rgba($magenta, 0.6), rgba($indigo, 0.4)); }
+.card[data-i="2"] .mockHero { background: linear-gradient(135deg, rgba($cyan, 0.55), rgba($magenta, 0.4)); }
+.card[data-i="3"] .mockHero { background: linear-gradient(135deg, rgba($indigo-bright, 0.6), rgba($cyan, 0.35)); }
+
+.mockBar {
+  display: flex;
+  gap: 5px;
+  padding: 0.6rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid $line;
+
+  span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+  }
+}
+
+.mockBody {
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: calc(100% - 33px);
+}
+
+.mockHero {
+  flex: 1;
+  border-radius: 8px;
+}
+
+.mockRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+
+  span {
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+
+.name {
+  font-size: $fs-h3;
+}
+
+.category {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-faint;
+  letter-spacing: 0.03em;
+}
+
+.note {
+  font-size: $fs-sm;
+  color: $text-faint;
+  text-align: center;
+}

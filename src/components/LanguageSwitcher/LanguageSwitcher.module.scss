@@ -1,0 +1,32 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.switcher {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid $line;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.option {
+  position: relative;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: $text-faint;
+  transition:
+    color 0.2s $ease-out,
+    background 0.2s $ease-out;
+
+  &[data-active="true"] {
+    color: #fff;
+    background: $grad-primary;
+  }
+
+  &:hover:not([data-active="true"]) {
+    color: $text;
+  }
+}

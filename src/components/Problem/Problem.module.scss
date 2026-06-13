@@ -1,0 +1,126 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.problem {
+  position: relative;
+  background: $ink;
+}
+
+.inner {
+  @include container;
+  @include section;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 6vw, 4rem);
+}
+
+.split {
+  display: grid;
+  gap: 1.25rem;
+  align-items: stretch;
+
+  @include from($bp-md) {
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+}
+
+.card {
+  @include card;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.before {
+  border-color: rgba(255, 95, 87, 0.18);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 95, 87, 0.05),
+    rgba(255, 255, 255, 0.01)
+  );
+}
+
+.after {
+  border-color: rgba($cyan, 0.22);
+  background: linear-gradient(
+    180deg,
+    rgba($indigo, 0.1),
+    rgba($cyan, 0.03)
+  );
+  box-shadow: 0 20px 60px rgba($indigo, 0.18);
+}
+
+.tag {
+  align-self: flex-start;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-family: $font-mono;
+  font-size: $fs-eyebrow;
+  letter-spacing: 0.04em;
+  color: #ff9d97;
+  background: rgba(255, 95, 87, 0.12);
+}
+
+.tagGood {
+  color: $cyan;
+  background: rgba($cyan, 0.12);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: $fs-body;
+  color: $text-dim;
+  line-height: 1.5;
+}
+
+.icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  font-size: 0.72rem;
+  margin-top: 1px;
+}
+
+.iconBad {
+  color: #ff8983;
+  background: rgba(255, 95, 87, 0.14);
+}
+
+.iconGood {
+  color: $cyan;
+  background: rgba($cyan, 0.15);
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  color: $text-faint;
+
+  @include to($bp-md) {
+    rotate: 90deg;
+  }
+
+  span {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid $line;
+    background: $ink-soft;
+  }
+}

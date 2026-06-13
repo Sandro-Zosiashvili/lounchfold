@@ -1,0 +1,51 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: $text;
+  transition: opacity 0.2s $ease-out;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: $grad-primary;
+  box-shadow: 0 4px 18px rgba($indigo, 0.45);
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.markBase {
+  stroke: #fff;
+  stroke-width: 1.6;
+  fill: rgba(255, 255, 255, 0.12);
+}
+
+.markFold {
+  stroke: #fff;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.word {
+  line-height: 1;
+}

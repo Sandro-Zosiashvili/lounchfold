@@ -1,0 +1,155 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  transition:
+    background 0.3s $ease-out,
+    border-color 0.3s $ease-out,
+    backdrop-filter 0.3s $ease-out;
+  border-bottom: 1px solid transparent;
+
+  &[data-scrolled="true"] {
+    background: rgba($ink, 0.72);
+    backdrop-filter: blur(14px);
+    border-bottom-color: $line;
+  }
+}
+
+.inner {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: 72px;
+}
+
+.nav {
+  display: none;
+  gap: 1.75rem;
+
+  @include from($bp-lg) {
+    display: flex;
+  }
+}
+
+.link {
+  font-size: $fs-sm;
+  color: $text-dim;
+  transition: color 0.2s $ease-out;
+
+  &:hover {
+    color: $text;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.cta {
+  display: none;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  font-size: $fs-sm;
+  font-weight: 500;
+  color: #fff;
+  background: $grad-primary;
+  background-size: 160% 160%;
+  box-shadow: 0 6px 22px rgba($indigo, 0.4);
+  transition:
+    transform 0.25s $ease-out,
+    background-position 0.5s $ease-out;
+
+  @include from($bp-sm) {
+    display: inline-block;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    background-position: 100% 100%;
+  }
+}
+
+.burger {
+  position: relative;
+  display: grid;
+  place-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid $line;
+
+  @include from($bp-lg) {
+    display: none;
+  }
+
+  span {
+    display: block;
+    width: 18px;
+    height: 1.6px;
+    background: $text;
+    transition: transform 0.3s $ease-out;
+  }
+
+  &[data-open="true"] span:first-child {
+    transform: translateY(3.3px) rotate(45deg);
+  }
+  &[data-open="true"] span:last-child {
+    transform: translateY(-3.3px) rotate(-45deg);
+  }
+}
+
+.mobile {
+  position: fixed;
+  inset: 72px 0 0 0;
+  background: rgba($ink, 0.96);
+  backdrop-filter: blur(18px);
+  padding: $gutter;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.28s $ease-out,
+    transform 0.28s $ease-out;
+
+  &[data-open="true"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  @include from($bp-lg) {
+    display: none;
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mobileLink {
+  padding: 0.9rem 0.25rem;
+  font-family: $font-display;
+  font-size: 1.35rem;
+  border-bottom: 1px solid $line;
+  color: $text;
+}
+
+.mobileCta {
+  margin-top: 1.5rem;
+  padding: 0.95rem;
+  text-align: center;
+  border-radius: $radius-sm;
+  font-weight: 500;
+  color: #fff;
+  background: $grad-primary;
+}

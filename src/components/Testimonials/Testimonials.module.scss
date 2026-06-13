@@ -1,0 +1,87 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.testimonials {
+  position: relative;
+  background: $ink-soft;
+}
+
+.inner {
+  @include container;
+  @include section;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.grid {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: 1fr;
+
+  @include from($bp-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  position: relative;
+  margin: 0;
+  padding: 2rem 1.75rem 1.75rem;
+  border-radius: $radius;
+  border: 1px solid $line;
+  background: $ink-card;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow: hidden;
+}
+
+.quoteMark {
+  position: absolute;
+  top: 0.4rem;
+  right: 1rem;
+  font-family: $font-display;
+  font-size: 4rem;
+  line-height: 1;
+  color: rgba($indigo-bright, 0.25);
+}
+
+.quote {
+  font-size: $fs-body;
+  color: $text;
+  line-height: 1.65;
+  flex: 1;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid $line;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: $grad-primary;
+  font-family: $font-display;
+  font-weight: 600;
+  color: #fff;
+}
+
+.author {
+  display: block;
+  font-weight: 500;
+  font-size: $fs-sm;
+}
+
+.role {
+  display: block;
+  font-size: 0.78rem;
+  color: $text-faint;
+}

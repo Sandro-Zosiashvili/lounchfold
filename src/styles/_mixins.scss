@@ -1,0 +1,55 @@
+@use "tokens" as *;
+
+// Media query helpers — mobile-first (min-width) where possible,
+// with `to()` for the few max-width cases.
+@mixin from($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin to($bp) {
+  @media (max-width: ($bp - 1px)) {
+    @content;
+  }
+}
+
+// Centered content container with responsive gutters.
+@mixin container {
+  width: 100%;
+  max-width: $maxw;
+  margin-inline: auto;
+  padding-inline: $gutter;
+}
+
+// Vertical section rhythm.
+@mixin section {
+  padding-block: $section-y;
+}
+
+// Gradient text fill.
+@mixin gradient-text($gradient: $grad-text) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+// Accessible focus ring, consistent across interactive elements.
+@mixin focus-ring {
+  outline: 2px solid $indigo-bright;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+// Frosted card surface.
+@mixin card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.015) 100%
+  );
+  border: 1px solid $line;
+  border-radius: $radius;
+  backdrop-filter: blur(8px);
+}

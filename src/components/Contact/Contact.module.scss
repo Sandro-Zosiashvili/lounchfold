@@ -1,0 +1,214 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.contact {
+  position: relative;
+  overflow: hidden;
+  background: $grad-surface;
+}
+
+.glow {
+  position: absolute;
+  bottom: -30%;
+  left: 50%;
+  width: min(800px, 110vw);
+  aspect-ratio: 1;
+  translate: -50% 0;
+  background: radial-gradient(
+    circle,
+    rgba($indigo, 0.3) 0%,
+    transparent 60%
+  );
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.inner {
+  @include container;
+  @include section;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: start;
+
+  @include from($bp-lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.direct {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.directLabel {
+  font-family: $font-mono;
+  font-size: $fs-eyebrow;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $text-faint;
+  margin-bottom: 0.3rem;
+}
+
+.directLink {
+  font-size: $fs-lead;
+  color: $text;
+  width: fit-content;
+  transition: color 0.2s $ease-out;
+
+  &:hover {
+    @include gradient-text($grad-text);
+  }
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.social {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid $line;
+  font-size: $fs-sm;
+  color: $text-dim;
+  transition:
+    border-color 0.2s $ease-out,
+    color 0.2s $ease-out;
+
+  &:hover {
+    border-color: rgba($indigo-bright, 0.6);
+    color: $text;
+  }
+}
+
+.formWrap {
+  @include card;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.row {
+  display: grid;
+  gap: 1.1rem;
+
+  @include from($bp-sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.label {
+  font-size: $fs-sm;
+  color: $text-dim;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  border-radius: $radius-sm;
+  border: 1px solid $line-strong;
+  background: rgba(0, 0, 0, 0.25);
+  color: $text;
+  transition:
+    border-color 0.2s $ease-out,
+    box-shadow 0.2s $ease-out;
+
+  &::placeholder {
+    color: $text-faint;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $indigo-bright;
+    box-shadow: 0 0 0 3px rgba($indigo, 0.25);
+  }
+
+  &[data-invalid="true"] {
+    border-color: #ff5f57;
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.error {
+  font-size: 0.78rem;
+  color: #ff8983;
+}
+
+.formError {
+  font-size: $fs-sm;
+  color: #ff8983;
+}
+
+.submit {
+  margin-top: 0.4rem;
+  padding: 0.95rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 500;
+  color: #fff;
+  background: $grad-primary;
+  background-size: 160% 160%;
+  box-shadow: 0 10px 30px rgba($indigo, 0.45);
+  transition:
+    transform 0.25s $ease-out,
+    background-position 0.6s $ease-out,
+    opacity 0.2s $ease-out;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    background-position: 100% 100%;
+  }
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: progress;
+  }
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: $fs-lead;
+  color: $text;
+}
+
+.check {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: $grad-primary;
+  color: #fff;
+  font-size: 1.5rem;
+  box-shadow: 0 10px 30px rgba($indigo, 0.5);
+}

@@ -1,0 +1,58 @@
+// ─────────────────────────────────────────────────────────────
+// Design tokens — the single source of truth for visual values.
+// Exposed as both SCSS variables (compile-time) and CSS custom
+// properties (runtime, in _global.scss) so components can use either.
+// ─────────────────────────────────────────────────────────────
+
+// Color — deep, dark, gradient-friendly
+$ink:          #07070d; // page base, near-black with a violet tilt
+$ink-soft:     #0d0d18; // raised surfaces
+$ink-card:     #12121f; // cards
+$violet-deep:  #1a0b2e; // gradient anchor
+$indigo:       #5b3df5; // primary accent
+$indigo-bright:#7c63ff; // primary hover / glow
+$cyan:         #22d3ee; // secondary signal accent
+$magenta:      #d946ef; // tertiary, used sparingly in gradients
+
+$text:         #edeaf2; // primary text, warm off-white
+$text-dim:     #a8a2bd; // secondary text
+$text-faint:   #6b6582; // captions, meta
+$line:         rgba(255, 255, 255, 0.08); // hairline borders
+$line-strong:  rgba(255, 255, 255, 0.14);
+
+// Gradients
+$grad-primary: linear-gradient(135deg, #{$indigo} 0%, #{$magenta} 55%, #{$cyan} 130%);
+$grad-text:    linear-gradient(120deg, #ffffff 0%, #c9c2ff 45%, #7c63ff 100%);
+$grad-surface: radial-gradient(120% 120% at 50% 0%, #{$violet-deep} 0%, #{$ink} 60%);
+
+// Typography
+$font-display: var(--font-display), var(--font-georgian), "Noto Sans Georgian", sans-serif;
+$font-body:    var(--font-body), var(--font-georgian), "Noto Sans Georgian", sans-serif;
+$font-mono:    var(--font-mono), var(--font-georgian), monospace;
+
+// Type scale (fluid via clamp)
+$fs-display: clamp(2.75rem, 6vw, 5.5rem);
+$fs-h1:      clamp(2.25rem, 4.5vw, 3.75rem);
+$fs-h2:      clamp(1.75rem, 3vw, 2.75rem);
+$fs-h3:      clamp(1.25rem, 1.8vw, 1.6rem);
+$fs-lead:    clamp(1.05rem, 1.5vw, 1.3rem);
+$fs-body:    1rem;
+$fs-sm:      0.875rem;
+$fs-eyebrow: 0.8125rem;
+
+// Spacing & layout
+$maxw:        1200px;
+$gutter:      clamp(1.25rem, 4vw, 3rem);
+$section-y:   clamp(5rem, 10vw, 9rem);
+$radius-sm:   10px;
+$radius:      18px;
+$radius-lg:   28px;
+
+// Motion
+$ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+$ease-inout:  cubic-bezier(0.65, 0, 0.35, 1);
+
+// Breakpoints
+$bp-sm: 640px;
+$bp-md: 860px;
+$bp-lg: 1100px;

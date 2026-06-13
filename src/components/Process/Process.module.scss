@@ -1,0 +1,80 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.process {
+  position: relative;
+  background: linear-gradient(180deg, $ink-soft 0%, $ink 100%);
+}
+
+.inner {
+  @include container;
+  @include section;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+  padding-left: 3.5rem;
+}
+
+.track {
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 22px;
+  width: 2px;
+  background: $line;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress {
+  position: absolute;
+  inset: 0;
+  background: $grad-primary;
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+.step {
+  position: relative;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.dot {
+  position: absolute;
+  left: calc(-3.5rem + 1px);
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid $line-strong;
+  background: $ink-card;
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text;
+  z-index: 1;
+}
+
+.body {
+  padding-top: 0.35rem;
+}
+
+.stepTitle {
+  font-size: $fs-h3;
+  margin-bottom: 0.45rem;
+}
+
+.stepText {
+  font-size: $fs-body;
+  color: $text-dim;
+  line-height: 1.6;
+  max-width: 40rem;
+}

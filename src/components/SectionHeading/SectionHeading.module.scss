@@ -1,0 +1,48 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 46rem;
+
+  &[data-align="center"] {
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: $fs-eyebrow;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $text-dim;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $grad-primary;
+  box-shadow: 0 0 12px rgba($indigo-bright, 0.8);
+}
+
+.title {
+  font-size: $fs-h2;
+
+  :global(.accent) {
+    @include gradient-text;
+  }
+}
+
+.subtitle {
+  font-size: $fs-lead;
+  color: $text-dim;
+  line-height: 1.55;
+}
