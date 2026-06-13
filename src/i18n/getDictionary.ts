@@ -1,7 +1,7 @@
 import type { Locale } from "./config";
-import type { Dictionary } from "./types";
 import { ka } from "./dictionaries/ka";
 import { en } from "./dictionaries/en";
+import {Dictionary} from "@/i18n/types";
 
 const dictionaries: Record<Locale, Dictionary> = { ka, en };
 

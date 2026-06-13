@@ -1,4 +1,4 @@
-import type { Dictionary } from "./types";
+import {Dictionary} from "@/i18n/types";
 
 export const ka: Dictionary = {
   meta: {
