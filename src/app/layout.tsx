@@ -6,7 +6,8 @@ import { site } from "@/config/site";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   icons: {
-    icon: "./public/assets/icons/icon.svg",
+    // Served from the public/ folder, which maps to the site root.
+    icon: "/assets/icons/icon.svg",
   },
 };
 
