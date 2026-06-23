@@ -8,32 +8,38 @@
 
 export const site = {
   /** Company name. Change this one value to rebrand the entire site. */
-  name: "Launchfold",
+  name: "Webily",
 
   /** Short brand mark used in tight spaces (e.g. mobile header). */
-  shortName: "LF",
+  shortName: "Wb",
+
+  /** Tagline used in metadata / structured data — one line, no period. */
+  tagline: "Websites & online stores for modern brands",
 
   /** Primary domain (no protocol). */
-  domain: "launchfold.com",
+  domain: "webily.ge",
 
-  /** Canonical URL used for metadata / Open Graph. */
-  url: "https://launchfold.com",
+  /**
+   * Canonical URL used for metadata / Open Graph.
+   * Reads NEXT_PUBLIC_SITE_URL when present, otherwise the production domain.
+   */
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://webily.ge",
 
   /** Default language served when no preference is detected. */
   defaultLocale: "ka" as const,
 
   contact: {
-    email: "hello@launchfold.com",
+    email: "hello@webily.ge",
     phone: "+995 555 00 00 00",
     /** City / country line shown in the footer & contact section. */
     location: "Tbilisi, Georgia",
   },
 
   social: {
-    instagram: "https://instagram.com/launchfold",
-    facebook: "https://facebook.com/launchfold",
-    tiktok: "https://tiktok.com/@launchfold",
-    linkedin: "https://linkedin.com/company/launchfold",
+    instagram: "https://instagram.com/webily.ge",
+    facebook: "https://facebook.com/webily.ge",
+    tiktok: "https://tiktok.com/@webily.ge",
+    linkedin: "https://linkedin.com/company/webily-ge",
   },
 
   /** Year the company was founded — used for the footer copyright range. */

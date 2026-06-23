@@ -2,9 +2,11 @@ import {Dictionary} from "@/i18n/types";
 
 export const en: Dictionary = {
   meta: {
-    title: "Launchfold — From social shop to a real brand",
+    title: "Webily — Website & Online Store Development",
     description:
-      "Launchfold builds clean, fast and trustworthy online stores for businesses that sell on social media. Move from the feed to a space of your own.",
+      "Webily builds clean, fast and trustworthy websites and online stores for businesses that sell on social media. Move from the feed to a real brand of your own — webily.ge.",
+    keywords:
+      "Webily, webily.ge, website development, online store, ecommerce, web design, web development Georgia, online shop, brand website",
   },
 
   nav: {
@@ -84,7 +86,7 @@ export const en: Dictionary = {
   },
 
   why: {
-    eyebrow: "Why Launchfold",
+    eyebrow: "Why Webily",
     title: "We build it like it's our own brand",
     points: [
       {

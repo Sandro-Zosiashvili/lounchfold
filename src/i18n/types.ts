@@ -7,6 +7,8 @@ export interface Dictionary {
   meta: {
     title: string;
     description: string;
+    /** Comma-separated keywords for the <meta name="keywords"> tag. */
+    keywords: string;
   };
   nav: {
     services: string;

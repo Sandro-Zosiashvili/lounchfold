@@ -1,8 +1,8 @@
-# Launchfold
+# Webily
 
-A premium, bilingual (ქართული / English) brand website for a digital agency that
-builds online stores for social-media-only sellers. Built with Next.js 16, React 19,
-TypeScript, SCSS modules, GSAP and Framer Motion.
+A premium, bilingual (ქართული / English) brand website for **Webily** ([webily.ge](https://webily.ge)),
+a digital agency that builds websites and online stores for social-media-only sellers.
+Built with Next.js 16, React 19, TypeScript, SCSS modules, GSAP and Framer Motion.
 
 ## Getting started
 
@@ -84,6 +84,16 @@ and submit states. The network call in `src/hooks/useContactForm.ts` is a stub
 - Styling is SCSS modules only — no Tailwind.
 - Design tokens (colors, type scale, spacing, motion) live in
   `src/styles/_tokens.scss` and are mirrored as CSS variables in `globals.scss`.
-# lounchfold
 
-<!-- push test 2026-06-23 -->
+## SEO
+
+- Per-locale metadata (title, description, keywords, Open Graph, Twitter card)
+  is generated in `src/app/[locale]/layout.tsx` from the dictionaries.
+- **Organization + WebSite** JSON-LD structured data lives in
+  `src/config/structuredData.ts` and is rendered on every page — this is what
+  drives the brand search "webily" and rich results on Google.
+- `robots.ts`, `sitemap.ts` (per-locale, with hreflang) and `manifest.ts` are
+  app-router file conventions.
+- Favicon: `src/app/icon.svg`; share card: `src/app/opengraph-image.tsx`
+  (dynamically rendered); brand logo for JSON-LD: `public/logo.svg`.
+- Set the production URL via `NEXT_PUBLIC_SITE_URL` (see `.env.example`).

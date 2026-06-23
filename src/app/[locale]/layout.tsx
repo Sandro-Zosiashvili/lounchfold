@@ -5,6 +5,7 @@ import { isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/getDictionary";
 import { fontVariables } from "../fonts";
 import { site } from "@/config/site";
+import { buildJsonLd } from "@/config/structuredData";
 import "@/styles/globals.scss";
 
 export function generateStaticParams() {
@@ -19,23 +20,52 @@ export async function generateMetadata({
   const { locale } = await params;
   const safe: Locale = isLocale(locale) ? locale : site.defaultLocale;
   const dict = getDictionary(safe);
+  const ogLocale = safe === "ka" ? "ka_GE" : "en_US";
 
   return {
     metadataBase: new URL(site.url),
-    title: dict.meta.title,
-    description: dict.meta.description,
-    openGraph: {
-      title: dict.meta.title,
-      description: dict.meta.description,
-      url: site.url,
-      siteName: site.name,
-      locale: safe,
-      type: "website",
+    title: {
+      default: dict.meta.title,
+      template: `%s · ${site.name}`,
     },
+    description: dict.meta.description,
+    keywords: dict.meta.keywords,
+    applicationName: site.name,
+    authors: [{ name: site.name, url: site.url }],
+    creator: site.name,
+    publisher: site.name,
+    category: "technology",
     alternates: {
+      // Self-referencing canonical per locale avoids duplicate-content issues.
+      canonical: `/${safe}`,
       languages: {
         ka: "/ka",
         en: "/en",
+        "x-default": `/${site.defaultLocale}`,
+      },
+    },
+    openGraph: {
+      title: dict.meta.title,
+      description: dict.meta.description,
+      url: `${site.url}/${safe}`,
+      siteName: site.name,
+      locale: ogLocale,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.meta.title,
+      description: dict.meta.description,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
       },
     },
   };
@@ -51,9 +81,19 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
+  const dict = getDictionary(locale);
+  const jsonLd = buildJsonLd(locale, dict.meta.description);
+
   return (
     <html lang={locale} className={fontVariables}>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Organization + WebSite schema for rich results / brand search. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </body>
     </html>
   );
 }

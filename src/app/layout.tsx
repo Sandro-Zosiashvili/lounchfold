@@ -1,4 +1,11 @@
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
+import { site } from "@/config/site";
+
+/** Base URL so every relative OG/Twitter image resolves to an absolute URL. */
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+};
 
 /**
  * Pass-through root layout. The <html> and <body> tags live in the
