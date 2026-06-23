@@ -6,7 +6,7 @@ export const en: Dictionary = {
     description:
       "Webily builds clean, fast and trustworthy websites and online stores for businesses that sell on social media. Move from the feed to a real brand of your own — webily.ge.",
     keywords:
-      "Webily, webily.ge, website development, online store, ecommerce, web design, web development Georgia, online shop, brand website",
+      "Webily, webily.ge, Webly, Webili, website development, online store, ecommerce, web design, web development Georgia, online shop, brand website",
   },
 
   nav: {

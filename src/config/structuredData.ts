@@ -9,6 +9,23 @@
 import { site, socialLinks } from "@/config/site";
 import type { Locale } from "@/i18n/config";
 
+/**
+ * Common spellings people use when searching for the brand. Listed as
+ * schema.org `alternateName`s so Google associates these variants with
+ * Webily — legitimate, unlike stuffing them into page copy.
+ */
+const brandVariants = [
+  site.domain, // webily.ge
+  "Webily",
+  "Webily Georgia",
+  "Webly",
+  "Webili",
+  "Webaly",
+  "ვებილი",
+  "ვებლი",
+  "ვებაილი",
+];
+
 export function buildJsonLd(locale: Locale, description: string) {
   const orgId = `${site.url}/#organization`;
   const webId = `${site.url}/#website`;
@@ -20,7 +37,7 @@ export function buildJsonLd(locale: Locale, description: string) {
         "@type": "Organization",
         "@id": orgId,
         name: site.name,
-        alternateName: site.domain,
+        alternateName: brandVariants,
         legalName: site.name,
         url: site.url,
         logo: `${site.url}/logo.svg`,
@@ -49,7 +66,7 @@ export function buildJsonLd(locale: Locale, description: string) {
         "@id": webId,
         url: site.url,
         name: site.name,
-        alternateName: site.domain,
+        alternateName: brandVariants,
         description,
         inLanguage: locale === "ka" ? "ka-GE" : "en-US",
         publisher: { "@id": orgId },
