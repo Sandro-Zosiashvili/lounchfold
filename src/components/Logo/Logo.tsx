@@ -5,14 +5,13 @@ import styles from "./Logo.module.scss";
 
 interface LogoProps {
   locale: Locale;
-  /** Compact variant shows only the fold mark + short name. */
+  /** Compact variant shows only the W mark + short name. */
   compact?: boolean;
 }
 
 /**
- * Brand wordmark. The little "fold" glyph is the brand signature —
- * a flat plane folding into a corner, echoing "social feed → real store".
- * The name itself always comes from the central site config.
+ * Brand wordmark. The mark is the Webily "W" monogram set on the brand
+ * gradient tile. The name itself always comes from the central site config.
  */
 export function Logo({ locale, compact = false }: LogoProps) {
   return (
@@ -20,10 +19,9 @@ export function Logo({ locale, compact = false }: LogoProps) {
       <span className={styles.mark} aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
           <path
-            d="M4 20V6a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"
-            className={styles.markBase}
+            d="M4.5 7 8.5 17.5 12 11.5 15.5 17.5 19.5 7"
+            className={styles.markLetter}
           />
-          <path d="M15 4v5h5" className={styles.markFold} />
         </svg>
       </span>
       <span className={styles.word}>

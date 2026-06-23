@@ -27,20 +27,14 @@
   box-shadow: 0 4px 18px rgba($indigo, 0.45);
 
   svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 }
 
-.markBase {
+.markLetter {
   stroke: #fff;
-  stroke-width: 1.6;
-  fill: rgba(255, 255, 255, 0.12);
-}
-
-.markFold {
-  stroke: #fff;
-  stroke-width: 1.6;
+  stroke-width: 2.4;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
